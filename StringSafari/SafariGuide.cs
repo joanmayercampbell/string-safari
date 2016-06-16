@@ -52,12 +52,24 @@ namespace StringSafari
         /// <summary>
         /// Looks for at least two zebras in <paramref name="str"/>.
         /// <para>A zebra is defined as it is for the <see cref="HasZebra(string)"/> method.</para>
-        /// </summary>
+       /// </summary>
         /// <param name="str">The string to search</param>
         /// <returns>true if the string has at least two zebras in it, false otherwise</returns>
         public static bool HasADazzle(string str)
         {
-            return str.Contains("zebra");
+            int firstZebra = str.IndexOf("zebra");
+            int lastZebra = str.LastIndexOf("zebra");
+            int numOfZebra = lastZebra - firstZebra;
+
+            if (numOfZebra > 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }   
 
         /// <summary>
@@ -65,12 +77,25 @@ namespace StringSafari
         /// <para>A lion is the letters "LION", in any case combination (upper or lower)</para>
         /// <para>"Lion", "lion", "LION", and "LiOn" are all valid examples of lions.</para>
         /// </summary>
-        /// <param name="str">The string to search</param>
+        /// <param name="str">The string to search</pa
         /// <returns>true if the string has at least two lions in it, false otherwise</returns>
         public static bool HasAPride(string str)
         {
             // TODO
-            return false;
+            str.ToLower();
+
+            int firstLion = str.IndexOf("lion");
+            int lastLion = str.LastIndexOf("lion");
+            int numLions = lastLion - firstLion;
+
+            if (numLions > 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -82,7 +107,15 @@ namespace StringSafari
         public static bool ThereWillBeBlood(string str)
         {
             // TODO
-            return false;
+            if (HasAPride(str) && !HasADazzle(str))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
 
         /// <summary>
@@ -95,7 +128,15 @@ namespace StringSafari
         public static bool SafeDistanceToLion(string str)
         {
             // TODO
-            return false;
+            str.ToLower();
+            if (str.StartsWith("lion"))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }
