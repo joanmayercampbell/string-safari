@@ -18,10 +18,10 @@ namespace StringSafari
         {
             return str.Contains("zebra");
 
-        }   
-            
-            
-       
+        }
+
+
+
 
         /// <summary>
         /// Looks for an adult zebra in <paramref name="str"/>.
@@ -32,7 +32,7 @@ namespace StringSafari
         public static bool HasAdultZebra(string str)
         {
             return str.Contains("ZEBRA");
-            
+
         }
 
         /// <summary>
@@ -45,32 +45,35 @@ namespace StringSafari
         public static bool HasZebra(string str)
         {
             // TODO
-            return (str.ToLower() == "zebra");
-            
+            string newString = str.ToLower();
+            return HasBabyZebra(newString);
+
         }
 
         /// <summary>
         /// Looks for at least two zebras in <paramref name="str"/>.
         /// <para>A zebra is defined as it is for the <see cref="HasZebra(string)"/> method.</para>
-       /// </summary>
+        /// </summary>
         /// <param name="str">The string to search</param>
         /// <returns>true if the string has at least two zebras in it, false otherwise</returns>
         public static bool HasADazzle(string str)
         {
-            int firstZebra = str.IndexOf("zebra");
-            int lastZebra = str.LastIndexOf("zebra");
-            int numOfZebra = lastZebra - firstZebra;
 
-            if (numOfZebra > 1)
-            {
-                return true;
-            }
-            else
+            string newString = str.ToLower();
+            int firstZebra = newString.IndexOf("zebra");
+            int lastZebra = newString.LastIndexOf("zebra");
+
+
+            if (firstZebra == lastZebra)
             {
                 return false;
             }
-            
-        }   
+            else
+            {
+                return true;
+            }
+
+        }
 
         /// <summary>
         /// Looks for at least two lions in <paramref name="str"/>.
@@ -82,19 +85,19 @@ namespace StringSafari
         public static bool HasAPride(string str)
         {
             // TODO
-            str.ToLower();
+            string newString = str.ToLower();
 
-            int firstLion = str.IndexOf("lion");
-            int lastLion = str.LastIndexOf("lion");
-            int numLions = lastLion - firstLion;
+            int firstLion = newString.IndexOf("lion");
+            int lastLion = newString.LastIndexOf("lion");
 
-            if (numLions > 1)
+
+            if (firstLion == lastLion)
             {
-                return true;
+                return false;
             }
             else
             {
-                return false;
+                return true;
             }
         }
 
@@ -107,15 +110,16 @@ namespace StringSafari
         public static bool ThereWillBeBlood(string str)
         {
             // TODO
-            if (HasAPride(str) && !HasADazzle(str))
+            if (HasAPride(str) && !HasADazzle(str) && HasZebra(str))
             {
+
                 return true;
             }
             else
             {
                 return false;
             }
-            
+
         }
 
         /// <summary>
@@ -128,8 +132,8 @@ namespace StringSafari
         public static bool SafeDistanceToLion(string str)
         {
             // TODO
-            str.ToLower();
-            if (str.StartsWith("lion"))
+            string newString = str.ToLower();
+            if (newString.StartsWith("lion"))
             {
                 return false;
             }

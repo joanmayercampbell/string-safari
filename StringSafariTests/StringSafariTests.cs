@@ -72,7 +72,7 @@ namespace StringSafari.Test
         {
             return SafariGuide.ThereWillBeBlood(str);
         }
-
+        
         [TestCase("zebra", ExpectedResult = true)]
         [TestCase("Lion", ExpectedResult = false)]
         [TestCase("LION ZEBRA zebra lion", ExpectedResult = false)]
@@ -83,6 +83,6 @@ namespace StringSafari.Test
         {
             return SafariGuide.SafeDistanceToLion(str);
         }
-
+        
     }
 }
